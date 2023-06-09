@@ -5,8 +5,8 @@ This is a js file which explores indexedDB, which will be used for the game I ha
 //Let's create an object store with 3 players: me, Nimbus and Sparrow
 const playersD = [
     { id: 1, name: "Harris",  lives: 3, rn: 0, duration: 0, twenty: "no", status: "normal" },
-    { id: 2, name: "Sparrow", lives: 3, rn: 0, duration: 0, twenty: "no", status: "normal" },
-    { id: 3, name: "Nimbus",  lives: 3, rn: 0, duration: 0, twenty: "no", status: "normal" }
+    { id: 2, name: "Joe", lives: 3, rn: 0, duration: 0, twenty: "no", status: "normal" },
+    { id: 3, name: "Bob",  lives: 3, rn: 0, duration: 0, twenty: "no", status: "normal" }
   ];
 //defining the database variable
 
@@ -24,7 +24,7 @@ var OSlength = 0
 var sn = 0
 var activePlayers = []
 
-const request = window.indexedDB.open("ColorTestDB", 4)
+const request = window.indexedDB.open("ColorTestDB", 5)
 
   request.onerror = (event) =>{
     //somthing went wrong. figure out how to handle it
@@ -153,8 +153,7 @@ const request = window.indexedDB.open("ColorTestDB", 4)
     request.onupgradeneeded = (event) => {
       console.log("upgrading...")
       const db = event.target.result;
-
-      db.deleteObjectStore("players");
+db.deleteObjectStore("players");
       //d.onsuccess = (event) => {
         //console.log("players has been deleted")
 
@@ -187,7 +186,7 @@ const request = window.indexedDB.open("ColorTestDB", 4)
   
 
 function getCount(){
-  const request = window.indexedDB.open("ColorTestDB", 4)
+  const request = window.indexedDB.open("ColorTestDB", 5)
   request.onerror = (event) =>{
     //somthing went wrong. figure out how to handle it
     //this should do whatever is needed
@@ -226,7 +225,7 @@ function getCount(){
 function viewData(){
   //getCount()
   console.log("view")
-  const request = window.indexedDB.open("ColorTestDB", 4)
+  const request = window.indexedDB.open("ColorTestDB", 5)
   request.onerror = (event) =>{
     //somthing went wrong. figure out how to handle it
     //this should do whatever is needed
@@ -268,7 +267,7 @@ function viewData(){
 function resetOS(){
 
   console.log("modify")
-  const request = window.indexedDB.open("ColorTestDB", 4)
+  const request = window.indexedDB.open("ColorTestDB", 5)
   request.onerror = (event) =>{
     //somthing went wrong. figure out how to handle it
     //this should do whatever is needed
@@ -364,7 +363,7 @@ function addPlayer(){
 
   console.log("add")
   //open IDB
-  const request = window.indexedDB.open("ColorTestDB", 4)
+  const request = window.indexedDB.open("ColorTestDB", 5)
 
   request.onerror = (event) =>{
     //somthing went wrong. figure out how to handle it
@@ -484,7 +483,7 @@ function deletePlayer(){
   }
   }
   //console.log("delete")
-  const request = window.indexedDB.open("ColorTestDB", 4)
+  const request = window.indexedDB.open("ColorTestDB", 5)
   request.onerror = (event) =>{
     //somthing went wrong. figure out how to handle it
     //this should do whatever is needed
@@ -539,7 +538,7 @@ function realignCount(dId){
 
   //the only time someone might delete a player is before the game. Thus, the only info to be carried over 
   //is the names of the others already playing
-  const request = window.indexedDB.open("ColorTestDB", 4)
+  const request = window.indexedDB.open("ColorTestDB", 5)
   request.onerror = (event) =>{
       //somthing went wrong. figure out how to handle it
       //this should do whatever is needed
@@ -613,7 +612,7 @@ function realignCount(dId){
   function resetStore(){
     console.log(names.length)
 
-    const request = window.indexedDB.open("ColorTestDB", 4)
+    const request = window.indexedDB.open("ColorTestDB", 5)
     request.onerror = (event) =>{
       //somthing went wrong. figure out how to handle it
       //this should do whatever is needed
@@ -714,7 +713,7 @@ function startGame(){
 }
 
 function populateActivePlayers(){
-  const request = window.indexedDB.open("ColorTestDB", 4);
+  const request = window.indexedDB.open("ColorTestDB", 5);
 
       request.onerror = (event) =>{
         //somthing went wrong. figure out how to handle it
@@ -753,7 +752,7 @@ function populateActivePlayers(){
 function nextTurn(){
   console.log(sn)
   var playerCounter = 0
-    const request = window.indexedDB.open("ColorTestDB", 4);
+    const request = window.indexedDB.open("ColorTestDB", 5);
 
     request.onerror = (event) =>{
       //somthing went wrong. figure out how to handle it
@@ -1056,7 +1055,7 @@ function nextTurn(){
     //this runs any time the data store needs to be updated
     //it takes the data and type to be updated as parameters
     function updateOS(newData, type, playerToBeUpdated){
-      const request = window.indexedDB.open("ColorTestDB", 4);
+      const request = window.indexedDB.open("ColorTestDB", 5);
 
       request.onerror = (event) =>{
         //somthing went wrong. figure out how to handle it
@@ -1121,258 +1120,6 @@ function nextTurn(){
               };
       }
     }
-  //rn will be compared to ranN (ranN is randomly generated)
-  /*var rn = 0
-  var ranN = 0
-  //this one will determine how the rn is changed should the player survive
-  var raN2 = 0
-  var sn2 = sn
-  //there are 2 variables at play here - sn stands for the number of players overall, subtracting one 
-  //as a player is eliminated. sn2 is always equal to the number of players in the game, to match up with
-  //element ids
-  for (var i = 0; i < sn2; i++){
-    //variables to get info from the html, and make boxes opaque
-    var pBase = "player" + (i + 1)
-    console.log(pBase + ' is taking their turn')
-    var pNum = pBase + "Number"
-    var pSts = pBase + "Status"
-    var sts = document.getElementById(pSts).innerHTML
-    rn = document.getElementById(pNum).innerHTML
-    rn -= 0;   
-    //I'm not mean; no one can lose on turn one
-    if (rn == 0){
-      console.log("You can't lose on turn 1!")
-      rn += 1
-      document.getElementById(pNum).innerHTML = rn
-    } else {
-      //after move one, this comparator tells if the player is still active
-      if (sts == "normal"){
-        //if so, proceed with turn
-        //getting the numbers to compare
-        ranN = Math.floor(Math.random() * 100)
-        //comparison determines if the random number is greater than the red number
-        if (ranN >= rn){
-          console.log("safe!")
-          console.log(ranN + " " + rn)
 
-          ranN2 = Math.floor(Math.random() * 100)
-          if (ranN2 <= 90){
-            //beige; one more random call!
-            var ran3 = Math.floor(Math.random() * 100)
-            if (ran3 >= 50){
-              console.log("number added!")
-              rn+=1
-            }
-          } else {
-            //maroon, +2!
-            console.log("uh oh...")
-            rn+=2
-          }
-          //this is where the second roll is determined
-          //this will be replaced with a 50/50 shot at adding 1 to your total
-          document.getElementById(pNum).innerHTML = rn
-        } else {
-          var pLives = pBase + "Lives"
-          var pLivesHTML = document.getElementById(pLives).innerHTML
-          var pLivesHTML = (pLivesHTML -= 0)
-          //if the number is less than the rn, you lose!
-          if (pLivesHTML > 1){
-            pLivesHTML--
-            document.getElementById(pLives).innerHTML = pLivesHTML
-            //you live, for now
-          } else {
-            pLivesHTML--
-            console.log("Sorry you lose!")
-            document.getElementById(pBase).style.opacity = 0.5
-            document.getElementById(pSts).innerHTML = "eliminated"
-            document.getElementById(pLives).innerHTML = 0
-            //the number of players decreases by 1
-            sn--
-            console.log(sn)
-          }
-        }
-      } else {
-        //sn2 increases to match the overall number of players
-        sn2++
-        console.log("skipping eliminated player")
-      }     
-    }
-  }
-  //here's the fun! Either there is a winner or a tie!
-  if (sn <= 1){
-    console.log(sn)
-    document.getElementById("nextTurn").style.display = "none"
-    document.getElementById("playAgain").style.display = "block"
-    document.getElementById("victoryMessage").style.display = "block"
-    //if sn = 0, then there is a tie between some players. We can tell who by who has a number element matching the rn
-    if (sn == 0){
-      winners = " are winners via tie!"
-      for (var j = 0; j < sn2; j++){
-        j2 = j + 1
-        //in this case we check to see who has the highest numbers, since all statuses are "eliminated"
-        var endNum = "player" + j2 + "Number"
-        console.log(endNum)
-        endNumNRHTML = document.getElementById(endNum).innerHTML
-        console.log(endNumNRHTML)
-        var winner = "player" + j2 + "Name"
-        winnerName = document.getElementById(winner).innerHTML
-        //the winners will all have the current value of the random number!
-        if (endNumNRHTML == rn){
-          //console.log(sn2)
-          winners =  " " + winnerName + "," + winners
-        }
-      }
-      document.getElementById("victoryMessage").innerHTML = winners   
-    } else {
-      //otherwise there is a definite winner. They still have a status of normal
-      for (var j = 0; j < sn2; j++){
-        j2 = j + 1
-        var endSts = "player" + j2 + "Status"
-        console.log(endSts)
-        endStsNRHTML = document.getElementById(endSts).innerHTML
-        console.log(endStsNRHTML)
-        var winner = "player" + j2 + "Name"
-        winnerName = document.getElementById(winner).innerHTML
-        if (endStsNRHTML != "normal"){
-          console.log(sn2)
-        } else {            
-          document.getElementById("victoryMessage").innerHTML = winnerName + " wins!"     
-          document.getElementById(endSts).innerHTML = "Winner!"           
-          break
-        }
-      }
-    }
-  }*/
 }
 
-//the stuff I've gathered so far
-/*const request = window.indexedDB.open("ColorTestDB", 1)
-
-request.onsuccess = (event) =>{
-    //we're in! what would you like to do?
-    //somwthing happens in here
-    db = event.target.result;
-    //console.log("success!")
-
-    //playing with my test db. 
-    const transaction = db.transaction(["players"], "readwrite")
-
-    transaction.oncomplete = (event) => {
-        console.log("transaction complete")
-    }
-    
-    transaction.onerror = (event) => {
-        console.log("transaction failed")
-    }
-   
-    //This transaction adds info to the store
-    /*const objectStore = transaction.objectStore("players");
-     playersD.forEach((player) => {
-      const request = objectStore.add(player);
-      request.onsuccess = (event) => {
-         event.target.result === playersD.id;
-      };
-    });*/
-
-    //this one retrieves data from the store
-    /*db
-    .transaction("players")
-    .objectStore("players")
-    .get(3).onsuccess = (event) => {
-    console.log(`Name for 3 is ${event.target.result.name}`);
-    };*/
-
-     //this one deletes data from the store
-    /*db
-    .transaction(["players"], "readwrite")
-    .objectStore("players")
-    .delete(4).onsuccess = (event) => {
-    console.log("player deleted");
-    };*/
-
-    /*const objectStore = db
-    .transaction(["players"], "readwrite")
-    .objectStore("players");
-    const req = objectStore.get(4);
-    req.onerror = (event) => {
-    // Handle errors!
-    console.log("error")
-    };
-    req.onsuccess = (event) => {
-        // Get the old value that we want to update
-        const data = event.target.result;
-      
-        // update the value(s) in the object that you want to change
-        data.name = "Mr. Slushy";
-      
-        // Put this updated object back into the database.
-        const requestUpdate = objectStore.put(data);
-        requestUpdate.onerror = (event) => {
-          // Do something with the error
-          console.log("update error")
-        };
-        requestUpdate.onsuccess = (event) => {
-          // Success - the data is updated!
-          console.log("update successful")
-        };
-      };*/
-
-      /*const objectStore = db.transaction(["players"], "readwrite").objectStore("players");
-
-      objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-          console.log(`Number for ID #${cursor.key} is ${cursor.value.rn}`);
-          cursor.continue();
-        } else {
-          console.log("No more entries!");
-        }
-};*/
-
-//};
-
-/*request.onerror = (event) =>{
-    //somthing went wrong. figure out how to handle it
-    //this should do whatever is needed
-    console.error(`Database error: ${event.target.errorCode}`);
-};
-
-//when creating a db, or
-request.onupgradeneeded = (event) => {
-    console.log("object store added successfully")
-    // Save the IDBDatabase interface
-    const db = event.target.result;
-  
-    // Create an objectStore for this database (players)
-    const objectStore = db.createObjectStore("players", { keyPath: "id" });
-
-
-    // calls a member by name
-    objectStore.createIndex("name", "name", { unique: false });
-
-    // so we can't use a unique index.
-    objectStore.createIndex("id", "id", { unique: true });
-
-    // Use transaction oncomplete to make sure the objectStore creation is
-    // finished before adding data into it.
-    objectStore.transaction.oncomplete = (event) => {
-        // Store values in the newly created objectStore.
-        db
-          .transaction("players", "readwrite")
-          .objectStore("players");
-        playersD.forEach((player) => {
-        playerObjectStore.add(player);
-        });
-    };
-};*/
-
-
-function testFunct(){
-  var songs = []
-
-   var len = songs.length
-   var rand = Math.floor(Math.random() * len)     
-   console.log(songs[rand])
-   songs.pop(songs[rand]) 
-   console.log(songs.length)     
-}
