@@ -1,0 +1,130 @@
+/*
+This is the CSS file for the Color Game
+*/
+body {
+    background-color: gray;
+}
+h1 {
+    font-size:40px;
+    font-weight:normal;
+    font-family: sans-serif;
+    margin-bottom: 50px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+/* a display modifier that centers a div; used for the dropdown headers and options*/
+.centered {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.red{
+    color: red
+}
+
+.brown{
+    color: brown
+}
+
+.blue{
+    color: blue
+}
+
+.green{
+    color: green
+}
+
+.white{
+    color: white
+}
+
+
+
+.player {
+    width: 80pt;
+    height: 80pt;
+    margin: 5pt;
+    background-color: #9a9a9a;
+    border: 2pt solid;
+}
+
+.playerName {
+    margin-left: 5pt;
+    margin-top: 5pt;
+    margin-bottom: 0pt;
+}
+
+.playerLives {
+    display: inline;
+    text-align: right;
+    margin-right: 5pt;
+    margin-top: 5pt;
+    margin-bottom: 0pt;
+    
+}
+
+.playerNumber {
+    margin-top: 0pt;
+    margin-bottom: 0pt;
+    text-align: center;
+    font-size: 35pt;
+    color: red; 
+}
+
+.playerStatus {
+    margin-top: 0pt;
+    margin-bottom: 0pt;
+    text-align: center;
+}
+
+/*#player1 {
+    opacity: 0.5;
+}*/
+/* a display modifier that puts equal space between divs; used for the items within dropdown headers and options*/
+.container2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* a display modifier that puts equal space around divs; used for the navigator at the bottom of the page*/
+.container3 {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 25px;
+    left: 0px;
+    right: 0px;
+}
+
+#upgrade {
+    background: url('./Images/TempUpgrade.PNG') no-repeat;
+    background-size: contain;
+}
+
+#start{
+    margin-top: 10pt;
+    width: 80pt;
+    height: 50pt;
+    font-size: 25pt;
+}
+
+#nextTurn {
+    display: none;
+    width: 90pt;
+    height: 35pt;
+    font-size: 15pt;
+}
+
+#playAgain {
+    display: none;
+    margin-top: 10pt;
+    width: 112pt;
+    height: 40pt;
+    font-size: 20pt;
+}
+
+#victoryMessage {
+    display: none;
+}

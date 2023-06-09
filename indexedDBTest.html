@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--This is a test file for learning indexedDB before I implement it in the main file-->
+<html>
+<head>
+    <title>
+        The Color Game (Test)
+    </title>
+    <script src="testIDB.js"></script> 
+    <link href="theColorGameCSS.css" rel="stylesheet">
+</head>
+<body>
+    <h1 id="title" onclick="resetOS()"><span class="red">T</span><span class="brown">h</span><span class="blue">e</span>
+        <span class="green">C</span><span class="white">o</span><span class="red">l</span><span class="brown">o</span><span class="blue">r</span>
+        <span class="green">G</span><span class="white">a</span><span class="red">m</span><span class="brown">e</span></h1>
+    <!--<p id="testP">This is the prototype for both game and database</p><br>-->
+    <!--<button id="viewData" onclick="viewData()">See stuff</button>
+    <button id="modifyData" onclick="modifyData()">Change stuff</button>
+    <button id="addData" onclick="addData()">Add stuff</button>
+    <button id="deleteData" onclick="deleteData()">Get rid of stuff</button><br>
+    <input type="text" id="randomText">-->
+    <div id="playerList" class="centered">
+        <!--<div class="player" id="player1">
+            <div class="container2">
+                <p class="playerName">Player 1:</p>
+                <p class="playerLives">2</p>
+            </div>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player" id="player2">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>
+        <div class="player">
+            <p class="playerName">Player 1:</p>
+            <p class="playerNumber">0</p>
+            <p class="playerStatus">status</p>
+        </div>-->
+
+    </div><br>
+    <input type="button" id="addPlayer" onclick="addPlayer()" value="Add Player">
+    <input type="button" id="deletePlayer"onclick="deletePlayer()" value="Delete Player"><br>
+    <input type="button" id="start" onclick="startGame()" value="Start">
+    <input type="button" id="nextTurn" onclick="nextTurn()" value="Next Turn">
+    <input type="button" id="playAgain" onclick="startGame()" value="Play Again">
+    <p id="victoryMessage">We have a winner!</p>
+</body>
+</html>
