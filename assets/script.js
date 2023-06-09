@@ -153,7 +153,7 @@ const request = window.indexedDB.open("ColorTestDB", 5)
     request.onupgradeneeded = (event) => {
       console.log("upgrading...")
       const db = event.target.result;
-db.deleteObjectStore("players");
+      //db.deleteObjectStore("players");
       //d.onsuccess = (event) => {
         //console.log("players has been deleted")
 
